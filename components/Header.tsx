@@ -71,7 +71,7 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-3 group relative z-10">
             <div className="absolute -inset-2 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-lg opacity-0 group-hover:opacity-100 blur-xl transition-all duration-500"></div>
             <Image 
-              src="/logo/pactium-logo.png" 
+              src="/logo/pactium-logo.jpg" 
               alt="Pactium Logo" 
               width={280} 
               height={80} 
