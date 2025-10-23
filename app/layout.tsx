@@ -13,9 +13,9 @@ export const metadata: Metadata = {
   keywords: 'AI, Africa, Tech, Startups, LegalBro, Semma AI, Movva, AgriTech, LegalTech',
   authors: [{ name: 'Pactium' }],
   icons: {
-    icon: '/logo/pactium-logo.jpg',
-    shortcut: '/logo/pactium-logo.jpg',
-    apple: '/logo/pactium-logo.jpg',
+    icon: '/pactium-icon.png',
+    shortcut: '/pactium-icon.png',
+    apple: '/pactium-icon.png',
   },
   openGraph: {
     title: 'Pactium - Building Intelligent Products That Scale Africa',
