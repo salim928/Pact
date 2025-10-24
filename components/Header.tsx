@@ -134,9 +134,11 @@ export default function Header() {
         </div>
 
         {/* Mobile Menu */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden fixed inset-0 top-[72px] bg-[#0a0e1a]/95 backdrop-blur-xl overflow-y-auto animate-in fade-in slide-in-from-top duration-300 z-40">
-            <div className="container mx-auto px-6 py-6 space-y-2">
+        <div className={`lg:hidden fixed inset-0 bg-[#0a0e1a]/95 backdrop-blur-xl overflow-y-auto transition-all duration-300 z-40 ${
+          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}>
+          <div className="min-h-screen pt-24 pb-8">
+            <div className="container mx-auto px-6 space-y-2">
               {navigation.map((item) => (
                 <div key={item.name}>
                   <Link
@@ -171,7 +173,7 @@ export default function Header() {
               </Link>
             </div>
           </div>
-        )}
+        </div>
       </nav>
     </header>
   )
