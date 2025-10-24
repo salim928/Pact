@@ -65,7 +65,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        className={`fixed top-0 w-full z-[110] transition-all duration-500 ${
           isScrolled 
             ? 'glass-strong shadow-lg shadow-cyan-500/5' 
             : 'bg-transparent'
@@ -132,7 +132,7 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden text-white p-2 rounded-lg hover:bg-white/5 transition-colors duration-300 relative z-[70]"
+            className="lg:hidden text-white p-2 rounded-lg hover:bg-white/5 transition-colors duration-300 relative"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
