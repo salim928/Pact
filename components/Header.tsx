@@ -63,13 +63,14 @@ export default function Header() {
   }, [mobileMenuOpen])
 
   return (
-    <header
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        isScrolled 
-          ? 'glass-strong shadow-lg shadow-cyan-500/5' 
-          : 'bg-transparent'
-      }`}
-    >
+    <>
+      <header
+        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+          isScrolled 
+            ? 'glass-strong shadow-lg shadow-cyan-500/5' 
+            : 'bg-transparent'
+        }`}
+      >
       <nav className="container mx-auto px-6 py-5">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -137,22 +138,15 @@ export default function Header() {
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
+      </nav>
+    </header>
 
-        {/* Mobile Menu */}
-        <div className={`lg:hidden fixed inset-0 bg-[#0a0e1a]/95 backdrop-blur-xl overflow-y-auto transition-all duration-300 z-[60] ${
-          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}>
-          <div className="min-h-screen pt-20 pb-8">
-            {/* Close button in menu */}
-            <div className="container mx-auto px-6 flex justify-end mb-4">
-              <button
-                className="text-white p-2 rounded-lg hover:bg-white/5 transition-colors duration-300"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <X size={24} />
-              </button>
-            </div>
-            <div className="container mx-auto px-6 space-y-2">
+      {/* Mobile Menu - Outside header for proper z-index */}
+      <div className={`lg:hidden fixed inset-0 bg-[#0a0e1a]/98 backdrop-blur-xl overflow-y-auto transition-all duration-300 ${
+        mobileMenuOpen ? 'opacity-100 pointer-events-auto z-[100]' : 'opacity-0 pointer-events-none -z-10'
+      }`}>
+        <div className="min-h-screen pt-24 pb-8">
+          <div className="container mx-auto px-6 space-y-2">
               {navigation.map((item) => (
                 <div key={item.name}>
                   {item.submenu ? (
@@ -205,7 +199,6 @@ export default function Header() {
             </div>
           </div>
         </div>
-      </nav>
-    </header>
+      </>
   )
 }
