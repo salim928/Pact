@@ -135,7 +135,7 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="lg:hidden fixed inset-x-0 top-[88px] bottom-0 bg-[#0a0e1a]/95 backdrop-blur-xl overflow-y-auto animate-in fade-in slide-in-from-top duration-300">
+          <div className="lg:hidden fixed inset-0 top-[72px] bg-[#0a0e1a]/95 backdrop-blur-xl overflow-y-auto animate-in fade-in slide-in-from-top duration-300 z-40">
             <div className="container mx-auto px-6 py-6 space-y-2">
               {navigation.map((item) => (
                 <div key={item.name}>
