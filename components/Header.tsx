@@ -36,6 +36,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const [mobileDropdown, setMobileDropdown] = useState<string | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -150,26 +151,43 @@ export default function Header() {
             <div className="container mx-auto px-6 space-y-2">
               {navigation.map((item) => (
                 <div key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="block px-4 py-3 text-silver hover:text-white rounded-lg hover:bg-white/5 transition-all duration-300 font-medium"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                  {item.submenu && (
-                    <div className="ml-4 mt-2 space-y-1">
-                      {item.submenu.map((subitem) => (
-                        <Link
-                          key={subitem.name}
-                          href={subitem.href}
-                          className="block px-4 py-2 text-sm text-silver/80 hover:text-cyan-400 rounded-lg hover:bg-white/5 transition-all duration-300"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          {subitem.name}
-                        </Link>
-                      ))}
-                    </div>
+                  {item.submenu ? (
+                    <>
+                      <button
+                        onClick={() => setMobileDropdown(mobileDropdown === item.name ? null : item.name)}
+                        className="w-full flex items-center justify-between px-4 py-3 text-silver hover:text-white rounded-lg hover:bg-white/5 transition-all duration-300 font-medium"
+                      >
+                        <span>{item.name}</span>
+                        <ChevronDown 
+                          size={16} 
+                          className={`transition-transform duration-300 ${
+                            mobileDropdown === item.name ? 'rotate-180' : ''
+                          }`}
+                        />
+                      </button>
+                      {mobileDropdown === item.name && (
+                        <div className="ml-4 mt-2 space-y-1">
+                          {item.submenu.map((subitem) => (
+                            <Link
+                              key={subitem.name}
+                              href={subitem.href}
+                              className="block px-4 py-2 text-sm text-silver/80 hover:text-cyan-400 rounded-lg hover:bg-white/5 transition-all duration-300"
+                              onClick={() => setMobileMenuOpen(false)}
+                            >
+                              {subitem.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : (
+                    <Link
+                      href={item.href}
+                      className="block px-4 py-3 text-silver hover:text-white rounded-lg hover:bg-white/5 transition-all duration-300 font-medium"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
                   )}
                 </div>
               ))}
