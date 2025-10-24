@@ -134,10 +134,19 @@ export default function Header() {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`lg:hidden fixed inset-0 bg-[#0a0e1a]/95 backdrop-blur-xl overflow-y-auto transition-all duration-300 z-40 ${
+        <div className={`lg:hidden fixed inset-0 bg-[#0a0e1a]/95 backdrop-blur-xl overflow-y-auto transition-all duration-300 z-[60] ${
           mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}>
-          <div className="min-h-screen pt-24 pb-8">
+          <div className="min-h-screen pt-20 pb-8">
+            {/* Close button in menu */}
+            <div className="container mx-auto px-6 flex justify-end mb-4">
+              <button
+                className="text-white p-2 rounded-lg hover:bg-white/5 transition-colors duration-300"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <X size={24} />
+              </button>
+            </div>
             <div className="container mx-auto px-6 space-y-2">
               {navigation.map((item) => (
                 <div key={item.name}>
